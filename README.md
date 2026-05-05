@@ -16,7 +16,7 @@
 
 ## 📦 Version
 
-Latest Version: **0.02**
+Latest Version: **0.0.2**
 
 ---
 
