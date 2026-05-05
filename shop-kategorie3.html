@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kategorie Drei — BoostYourBrawl</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0a0a0f; --surface: #12121a; --card: #181825;
+      --accent: #f0c030; --text: #e8e8f0; --muted: #7070a0;
+      --border: rgba(240,192,48,0.18); --green: #39d98a;
+    }
+    body {
+      background: var(--bg); color: var(--text);
+      font-family: 'Rajdhani', sans-serif; font-weight: 500;
+      min-height: 100vh; overflow-x: hidden;
+    }
+    body::before {
+      content: ''; position: fixed; inset: 0;
+      background-image: linear-gradient(rgba(240,192,48,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(240,192,48,0.04) 1px, transparent 1px);
+      background-size: 60px 60px; pointer-events: none; z-index: 0;
+    }
+
+    /* NAV */
+    nav {
+      position: relative; z-index: 10;
+      display: flex; align-items: center; gap: 16px;
+      padding: 20px 36px;
+      border-bottom: 1px solid var(--border);
+      background: rgba(10,10,15,0.85);
+      backdrop-filter: blur(8px);
+    }
+    nav a.back {
+      font-family: 'Bebas Neue', sans-serif; font-size: 1rem;
+      letter-spacing: 0.2em; color: var(--muted); text-decoration: none;
+      transition: color 0.2s;
+    }
+    nav a.back:hover { color: var(--accent); }
+    nav .sep { color: var(--border); }
+    nav .page-title {
+      font-family: 'Bebas Neue', sans-serif; font-size: 1rem;
+      letter-spacing: 0.2em; color: var(--accent);
+    }
+
+    /* HERO */
+    .shop-hero {
+      position: relative; z-index: 1;
+      display: flex; flex-direction: column; align-items: center;
+      padding: 60px 24px 40px;
+      border-bottom: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(240,192,48,0.06) 0%, transparent 100%);
+      text-align: center;
+    }
+    .shop-hero .icon { font-size: 56px; margin-bottom: 16px; }
+    .shop-hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 7vw, 4.5rem);
+      letter-spacing: 0.08em; color: var(--text); line-height: 1;
+    }
+    .shop-hero p { margin-top: 12px; color: var(--muted); font-size: 1.05rem; max-width: 520px; line-height: 1.6; }
+
+    /* CONTACT BANNER */
+    .contact-banner {
+      position: relative; z-index: 1;
+      display: flex; align-items: center; justify-content: center; gap: 14px;
+      background: rgba(57,217,138,0.08);
+      border-top: 1px solid rgba(57,217,138,0.25);
+      border-bottom: 1px solid rgba(57,217,138,0.25);
+      padding: 16px 24px;
+      font-size: 0.95rem; color: var(--green);
+      letter-spacing: 0.05em;
+    }
+    .contact-banner a {
+      color: var(--green); font-weight: 700; text-decoration: none;
+      border-bottom: 1px solid currentColor; transition: opacity 0.2s;
+    }
+    .contact-banner a:hover { opacity: 0.7; }
+
+    /* PRODUCTS */
+    main {
+      position: relative; z-index: 1;
+      max-width: 1100px; margin: 0 auto;
+      padding: 60px 24px 80px;
+    }
+    .section-label {
+      font-family: 'Bebas Neue', sans-serif; font-size: 1rem;
+      letter-spacing: 0.35em; color: var(--muted); margin-bottom: 36px;
+      text-transform: uppercase;
+    }
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 24px;
+    }
+    .product-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 4px; padding: 28px 24px;
+      display: flex; flex-direction: column; gap: 12px;
+      transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+      animation: fadeUp 0.5s ease both;
+    }
+    .product-card:nth-child(1) { animation-delay: 0.05s; }
+    .product-card:nth-child(2) { animation-delay: 0.15s; }
+    .product-card:nth-child(3) { animation-delay: 0.25s; }
+    .product-card:nth-child(4) { animation-delay: 0.35s; }
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 48px rgba(240,192,48,0.12);
+      border-color: rgba(240,192,48,0.45);
+    }
+    .product-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6rem; letter-spacing: 0.06em; line-height: 1;
+    }
+    .product-desc { font-size: 0.9rem; color: var(--muted); line-height: 1.55; flex: 1; }
+    .product-price {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem; color: var(--accent);
+      letter-spacing: 0.05em;
+    }
+    .product-price span { font-size: 1rem; color: var(--muted); margin-left: 4px; }
+    .buy-btn {
+      display: block; text-align: center;
+      padding: 11px 0; background: var(--accent);
+      color: #0a0a0f; font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.05rem; letter-spacing: 0.18em;
+      text-decoration: none; border-radius: 3px;
+      transition: background 0.2s, box-shadow 0.2s, transform 0.15s;
+    }
+    .buy-btn:hover {
+      background: #ffd84d;
+      box-shadow: 0 0 20px rgba(240,192,48,0.45);
+      transform: scale(1.02);
+    }
+
+    footer {
+      position: relative; z-index: 1;
+      text-align: center; padding: 28px;
+      border-top: 1px solid var(--border);
+      color: var(--muted); font-size: 0.85rem; letter-spacing: 0.06em;
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="back">← Zurück</a>
+    <span class="sep">|</span>
+    <span class="page-title">Kategorie Drei</span>
+  </nav>
+
+  <div class="shop-hero">
+    <div class="icon">🎯</div>
+    <h1>Kategorie Drei</h1>
+    <p>Platzhalter-Beschreibung für diese Shop-Kategorie. Ersetze diesen Text mit deiner eigenen Beschreibung der Produkte.</p>
+  </div>
+
+  <div class="contact-banner">
+    <span>📸 Zum Kaufen kontaktiere mich auf Snapchat:</span>
+    <a href="https://snapchat.com/add/DEINUSERNAME" target="_blank">@DEINUSERNAME</a>
+  </div>
+
+  <main>
+    <p class="section-label">Produkte</p>
+    <div class="products">
+
+      <div class="product-card">
+        <div class="product-name">Produkt Eins</div>
+        <div class="product-desc">Kurze Beschreibung dieses Produkts. Was bekommt der Käufer, was ist enthalten?</div>
+        <div class="product-price">4,99 € <span>EUR</span></div>
+        <a href="https://snapchat.com/add/DEINUSERNAME" class="buy-btn" target="_blank">Kaufen via Snapchat</a>
+      </div>
+
+      <div class="product-card">
+        <div class="product-name">Produkt Zwei</div>
+        <div class="product-desc">Kurze Beschreibung dieses Produkts. Was bekommt der Käufer, was ist enthalten?</div>
+        <div class="product-price">9,99 € <span>EUR</span></div>
+        <a href="https://snapchat.com/add/DEINUSERNAME" class="buy-btn" target="_blank">Kaufen via Snapchat</a>
+      </div>
+
+      <div class="product-card">
+        <div class="product-name">Produkt Drei</div>
+        <div class="product-desc">Kurze Beschreibung dieses Produkts. Was bekommt der Käufer, was ist enthalten?</div>
+        <div class="product-price">14,99 € <span>EUR</span></div>
+        <a href="https://snapchat.com/add/DEINUSERNAME" class="buy-btn" target="_blank">Kaufen via Snapchat</a>
+      </div>
+
+      <div class="product-card">
+        <div class="product-name">Produkt Vier</div>
+        <div class="product-desc">Kurze Beschreibung dieses Produkts. Was bekommt der Käufer, was ist enthalten?</div>
+        <div class="product-price">24,99 € <span>EUR</span></div>
+        <a href="https://snapchat.com/add/DEINUSERNAME" class="buy-btn" target="_blank">Kaufen via Snapchat</a>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>&copy; 2026 BoostYourBrawl</footer>
+
+</body>
+</html>
