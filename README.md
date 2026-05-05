@@ -1,4 +1,4 @@
-# 🚀 Project Name
+# Boost Your Brawl
 
 <p align="center">
   <img src="logo.png" width="160" alt="Logo"/>
